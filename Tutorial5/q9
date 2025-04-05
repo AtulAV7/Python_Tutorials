@@ -1,0 +1,18 @@
+import pandas as pd
+df = pd.read_csv('stud.csv')
+print("Contents:\n", df)
+df.set_index('rollno', inplace=True)
+print("Name and Mark:\n", df[['name', 'mark']])
+print("Ordered by name:\n", df.sort_values('name'))
+print("Ordered by mark descending:\n", df.sort_values('mark', ascending=False))
+print("Average mark:", df['mark'].mean())
+print("Median mark:", df['mark'].median())
+print("Mode mark:", df['mark'].mode())
+print("Min mark:", df['mark'].min())
+print("Max mark:", df['mark'].max())
+print("Variance:", df['mark'].var())
+print("Std Dev:", df['mark'].std())
+import matplotlib.pyplot as plt
+df['mark'].hist()
+plt.show()
+df.drop('place', axis=1, inplace=True)

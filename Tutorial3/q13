@@ -1,0 +1,18 @@
+def find_quadrant(x, y):
+    if x > 0 and y > 0:
+        return "First Quadrant"
+    elif x < 0 and y > 0:
+        return "Second Quadrant"
+    elif x < 0 and y < 0:
+        return "Third Quadrant"
+    elif x > 0 and y < 0:
+        return "Fourth Quadrant"
+    elif x == 0 and y != 0:
+        return "On Y-axis"
+    elif y == 0 and x != 0:
+        return "On X-axis"
+    else:
+        return "At Origin"
+
+x, y = 3, 4
+print(f"Point ({x}, {y}) is in {find_quadrant(x, y)}")

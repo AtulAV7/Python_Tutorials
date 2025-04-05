@@ -1,0 +1,15 @@
+import pandas as pd
+
+df = pd.read_csv('student.csv')
+df['CGPA'] = pd.to_numeric(df['CGPA'], errors='coerce')
+df.dropna(subset=['CGPA'], inplace=True)
+
+if 'Branch' not in df.columns:
+    print("Error: 'Branch' column not found in CSV.")
+    exit()
+
+print("Average CGPA:", round(df['CGPA'].mean(), 2))
+print("\nStudents with CGPA > 9:\n", df[df['CGPA'] > 9])
+print("\nCSE students with CGPA > 9:\n", df[(df['Branch'].str.upper() == 'CSE') & (df['CGPA'] > 9)])
+print("\nMax CGPA Student:\n", df.loc[df['CGPA'].idxmax()])
+print("\nAverage CGPA by Branch:\n", df.groupby('Branch')['CGPA'].mean())

@@ -1,0 +1,32 @@
+from breezypython import EasyFrame
+import random
+
+class GuessGame(EasyFrame):
+    def __init__(self):
+        EasyFrame.__init__(self, title="Guess the Number")
+
+        self.number = random.randint(1, 100)
+        self.guesses = 0
+
+        self.addLabel(text="Guess a number (1-100):", row=0, column=0)
+        self.input = self.addIntegerField(value=0, row=1, column=0)
+
+        self.addButton(text="Check", row=2, column=0, command=self.check_guess)
+
+        self.output = self.addLabel(text="", row=3, column=0)
+
+    def check_guess(self):
+        guess = self.input.getNumber()
+        self.guesses += 1
+        if guess > self.number:
+            self.output["text"] = "Too large, try again"
+        elif guess < self.number:
+            self.output["text"] = "Too small, try again"
+        else:
+            self.output["text"] = f"Correct! You guessed in {self.guesses} tries"
+
+def main():
+    GuessGame().mainloop()
+
+if __name__ == "__main__":
+    main()

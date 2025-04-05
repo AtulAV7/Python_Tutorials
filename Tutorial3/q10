@@ -1,0 +1,36 @@
+from breezypython import EasyFrame
+
+class BouncyBall(EasyFrame):
+    def __init__(self):
+        EasyFrame.__init__(self, title="Bouncy Ball")
+
+        self.addLabel(text="Initial Height:", row=0, column=0)
+        self.height = self.addFloatField(value=0.0, row=1, column=0)
+
+        self.addLabel(text="Bounciness Index (0-1):", row=2, column=0)
+        self.bounce = self.addFloatField(value=0.0, row=3, column=0)
+
+        self.addLabel(text="Number of Bounces:", row=4, column=0)
+        self.bounces = self.addIntegerField(value=0, row=5, column=0)
+
+        self.addButton(text="Calculate", row=6, column=0, command=self.calculate)
+
+        self.output = self.addLabel(text="", row=7, column=0)
+
+    def calculate(self):
+        try:
+            height = self.height.getNumber()
+            bounce = self.bounce.getNumber()
+            bounces = self.bounces.getNumber()
+            total = height
+            for i in range(bounces):
+                total += height * (bounce ** (i + 1)) * 2
+            self.output["text"] = f"Total distance: {round(total, 2)} units"
+        except ValueError:
+            self.messageBox(title="Error", message="Please enter valid numbers")
+
+def main():
+    BouncyBall().mainloop()
+
+if __name__ == "__main__":
+    main()

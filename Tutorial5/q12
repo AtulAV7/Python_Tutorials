@@ -1,0 +1,7 @@
+import pandas as pd
+df = pd.read_csv('employee.csv')
+print("First 7 records:\n", df.head(7))
+print("Names sorted:\n", df['name'].sort_values())
+print("Highest salary employee:", df.loc[df['salary'].idxmax()]['name'])
+print("Male employees:\n", df[df['gender'] == 'M']['name'])
+print("Teams:", df['team'].unique())

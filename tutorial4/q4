@@ -1,0 +1,12 @@
+class Student:
+    def __init__(self, name, roll_no):
+        self.name = name
+        self.roll_no = roll_no
+
+    def dataprint(self):
+        print(f"Name: {self.name}, Roll No: {self.roll_no}")
+
+stud1 = Student("Alice", "001")
+stud2 = Student("Bob", "002")
+stud1.dataprint()
+stud2.dataprint()

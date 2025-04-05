@@ -1,0 +1,10 @@
+import pandas as pd
+df = pd.read_csv('auto.csv')
+df.dropna(inplace=True)
+max_price = df.loc[df['price'].idxmax()]['company']
+toyota = df[df['company'] == 'Toyota']
+total_cars = len(df)
+highest_car = df.loc[df['price'].idxmax()]
+avg_mileage = df['average-mileage'].mean()
+sorted_df = df.sort_values('price')
+print("Results:", max_price, toyota, total_cars, highest_car, avg_mileage, sorted_df)

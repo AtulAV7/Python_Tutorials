@@ -1,0 +1,11 @@
+import numpy as np
+arr1 = np.random.randint(0, 20, (3, 3))
+arr2 = np.random.randint(0, 20, (3, 3))
+sum_arr = arr1 + arr2
+prod_arr = np.dot(arr1, arr2)
+transpose = np.transpose(prod_arr)
+print("Array 1:\n", arr1)
+print("Array 2:\n", arr2)
+print("Sum:\n", sum_arr)
+print("Product:\n", prod_arr)
+print("Transpose of product:\n", transpose)

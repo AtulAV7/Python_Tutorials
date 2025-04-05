@@ -1,0 +1,6 @@
+import turtle
+p = turtle.Turtle()
+for i in range(5):
+    p.forward(100)
+    p.right(72)
+turtle.done()

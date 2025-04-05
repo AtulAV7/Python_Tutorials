@@ -1,0 +1,22 @@
+from breezypython import EasyFrame
+
+class UppercaseConverter(EasyFrame):
+    def __init__(self):
+        EasyFrame.__init__(self, title="Uppercase Converter")
+
+        self.addLabel(text="Enter text:", row=0, column=0)
+        self.input = self.addTextField(text="", row=1, column=0)
+
+        self.addButton(text="Convert", row=2, column=0, command=self.to_upper)
+
+        self.output = self.addLabel(text="", row=3, column=0)
+
+    def to_upper(self):
+        text = self.input.getText()
+        self.output["text"] = text.upper()
+
+def main():
+    UppercaseConverter().mainloop()
+
+if __name__ == "__main__":
+    main()

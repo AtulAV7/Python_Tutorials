@@ -1,0 +1,11 @@
+class Arith:
+    def read(self):
+        self.a = float(input("Enter first number: "))
+        self.b = float(input("Enter second number: "))
+
+    def add(self):
+        return self.a + self.b
+
+obj = Arith()
+obj.read()
+print("Sum:", obj.add())

@@ -1,0 +1,36 @@
+from breezypython import EasyFrame
+
+class ComputerGuessGame(EasyFrame):
+    def __init__(self):
+        EasyFrame.__init__(self, title="Computer Guesses")
+
+        self.low, self.high = 1, 100
+        self.guess = (self.low + self.high) // 2
+
+        self.output = self.addLabel(text=f"My guess: {self.guess}", row=0, column=0)
+
+        self.too_small = self.addButton(text="Too small", row=1, column=0, command=self.small)
+        self.too_large = self.addButton(text="Too large", row=2, column=0, command=self.large)
+        self.correct = self.addButton(text="Correct", row=3, column=0, command=self.correct)
+
+    def small(self):
+        self.low = self.guess + 1
+        self.guess = (self.low + self.high) // 2
+        self.output["text"] = f"My guess: {self.guess}"
+
+    def large(self):
+        self.high = self.guess - 1
+        self.guess = (self.low + self.high) // 2
+        self.output["text"] = f"My guess: {self.guess}"
+
+    def correct(self):
+        self.output["text"] = "I guessed it!"
+        self.too_small["state"] = "disabled"
+        self.too_large["state"] = "disabled"
+        self.correct["state"] = "disabled"
+
+def main():
+    ComputerGuessGame().mainloop()
+
+if __name__ == "__main__":
+    main()

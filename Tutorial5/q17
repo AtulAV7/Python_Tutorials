@@ -1,0 +1,19 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv('weather.csv')
+df['temperature'] = pd.to_numeric(df['temperature'], errors='coerce')
+df.dropna(subset=['temperature'], inplace=True)
+
+print("First 10 rows:\n", df.head(10))
+print("Max temp:", df['temperature'].max())
+print("Min temp:", df['temperature'].min())
+print("Places with temp < 28:\n", df[df['temperature'] < 28]['place'])
+print("Cloudy places:\n", df[df['weather'] == 'Cloudy']['place'])
+print(df['weather'].value_counts())
+
+df.plot(kind='bar', x='date', y='temperature')
+plt.title("Temperature by Date")
+plt.xlabel("Date")
+plt.ylabel("Temperature")
+plt.show()

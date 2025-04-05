@@ -1,0 +1,29 @@
+from breezypython import EasyFrame
+
+class SquareRootCalculator(EasyFrame):
+    def __init__(self):
+        EasyFrame.__init__(self, title="Square Root Calculator")
+
+        self.addLabel(text="Enter number:", row=0, column=0)
+        self.input = self.addFloatField(value=0.0, row=1, column=0)
+
+        self.addButton(text="Calculate", row=2, column=0, command=self.calc_sqrt)
+
+        self.output = self.addLabel(text="", row=3, column=0)
+
+    def calc_sqrt(self):
+        try:
+            num = self.input.getNumber()
+            if num < 0:
+                self.messageBox(title="Error", message="Cannot compute square root of negative number")
+            else:
+                result = num ** 0.5
+                self.output["text"] = f"Square Root: {result}"
+        except ValueError:
+            self.messageBox(title="Error", message="Please enter a valid number")
+
+def main():
+    SquareRootCalculator().mainloop()
+
+if __name__ == "__main__":
+    main()
